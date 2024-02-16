@@ -48,7 +48,7 @@ passport.use(new LocalStrategy(
                 //     console.log('Invalid credentials')
                 //     return done(null, false, {message: 'Invalid credentials.\n'})
                 // }
-                if (!bcrypt.compareSync(password, user.password)){ // compare the hashed passwords (match = true)
+                if (!bcrypt.compareSync(password, user.password)){
                     console.log('Invalid credentials')
                     return done(null, false, {message: 'Invalid credentials.\n'})
                 }

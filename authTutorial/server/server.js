@@ -1,3 +1,20 @@
+/**
+ * Handle encrypted passwords
+ * Saving un-hashed passwords is a bad idea.  We as the admin of this login system should never really be able to tell the passwords of our users.
+ * 
+ * `yarn add bcrypt-nodejs`
+ * 
+ * 1. A user will send their password as plaintext
+ * 2. This will be hashed and compared to what we have in the database
+ * 3. add hashed passwords to the db (see documentation on salting passwords)
+ * 
+ * try logging in again and it should succeed
+ * curl http://localhost:3001/login -c cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}' -L
+ * 
+ * To create text that is hashed go to the play endpoint /hashthis
+ * curl http://localhost:3001/saltthis -H 'Content-Type: application/json' -d '{"text": "mattIsReallyCool"}'
+ */
+
 import express from 'express'
 import {v4 as uuidv4} from 'uuid'
 import session from 'express-session'
