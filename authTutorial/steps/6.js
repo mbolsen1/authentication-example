@@ -1,3 +1,23 @@
+/**
+ * 
+ * Lets start by just going to the homepage
+ * curl -X GET http://localhost:3001 -c cookie-file.txt
+ * 
+ * Lets go to the authrequired route (-L means to follow redirects)
+ * curl -X GET http://localhost:3001/authrequired -b cookie-file.txt -L
+ * 
+ * login did not work, so lets login
+ * 
+ * curl -X POST http://localhost:3001/login -c cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}'
+ * -> successfully logged in
+ * 
+ * Now try the authrequired route again
+ * curl -X GET http://localhost:3001/authrequired -b cookie-file.txt -L
+ * Horray successful at getting to this endpoint
+ * 
+ * The deserializeUser callback function was able to match our session id to the session-file-store adn retrieve the user id
+ */
+
 import express from 'express'
 import {v4 as uuidv4} from 'uuid'
 import session from 'express-session'
@@ -92,25 +112,3 @@ app.get('/authrequired', (req,res) => {
 })
 
 app.listen(3001, () => { console.log('Listening on localhost:3001')})
-
-
-
-/**
- * 
- * Lets start by just going to the homepage
- * curl -X GET http://localhost:3001 -c cookie-file.txt
- * 
- * Lets go to the authrequired route (-L means to follow redirects)
- * curl -X GET http://localhost:3001/authrequired -b cookie-file.txt -L
- * 
- * login did not work, so lets login
- * 
- * curl -X POST http://localhost:3001/login -c cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}'
- * -> successfully logged in
- * 
- * Now try the authrequired route again
- * curl -X GET http://localhost:3001/authrequired -b cookie-file.txt -L
- * Horray successful at getting to this endpoint
- * 
- * The deserializeUser callback function was able to match our session id to the session-file-store adn retrieve the user id
- */

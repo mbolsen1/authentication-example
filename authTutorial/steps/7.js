@@ -1,3 +1,19 @@
+/**
+ * Hook up a database and handle incorrect credentials
+ * 
+ * 1. Create a new database folder at the same level as the server and client folders
+ * 2. Initialize npm or yarn
+ * 3. `yarn add json-server` <- This package will allow us to use a json file as a db and we can use REST to communicate with it!
+ * 4. `touch db.json` and put some sample data into that file.  id, email, password.  Pretty cool.  Go to the suggested url and explore
+ * 
+ * 5. `yarn add axios` to the server
+ * 6. Lets add some database calls within out Local Strategy and the deserialize user.
+ * 7. fix up the POST /login route to handle the new messages from the local authenticate strategy and the deserialize user
+ * 
+ * curl http://localhost:3001/login -c cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}' -L
+ * 
+ */
+
 import express from 'express'
 import {v4 as uuidv4} from 'uuid'
 import session from 'express-session'
@@ -118,22 +134,3 @@ app.get('/authrequired', (req,res) => {
 })
 
 app.listen(3001, () => { console.log('Listening on localhost:3001')})
-
-
-
-
-/**
- * Hook up a database and handle incorrect credentials
- * 
- * 1. Create a new database folder at the same level as the server and client folders
- * 2. Initialize npm or yarn
- * 3. `yarn add json-server` <- This package will allow us to use a json file as a db and we can use REST to communicate with it!
- * 4. `touch db.json` and put some sample data into that file.  id, email, password.  Pretty cool.  Go to the suggested url and explore
- * 
- * 5. `yarn add axios` to the server
- * 6. Lets add some database calls within out Local Strategy and the deserialize user.
- * 7. fix up the POST /login route to handle the new messages from the local authenticate strategy and the deserialize user
- * 
- * curl http://localhost:3001/login -c cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}' -L
- * 
- */

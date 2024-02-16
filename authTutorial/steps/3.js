@@ -1,3 +1,9 @@
+/**
+ * This step we add the file store to the session manager
+ * 
+ * cd client
+ * curl -X GET http://localhost:3001 -b cookie-file.txt -v
+ */
 import express from 'express'
 import {v4 as uuidv4} from 'uuid'
 import session from 'express-session';
@@ -27,10 +33,3 @@ app.get('/', (req,res) => {
 })
 
 app.listen(3001, () => { console.log('Listening on localhost:3001')})
-
-/**
- * This step we add the file store to the session manager
- * 
- * cd client
- * curl -X GET http://localhost:3001 -b cookie-file.txt -v
- */

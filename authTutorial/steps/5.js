@@ -1,3 +1,18 @@
+/**
+ * This is where we add passport, which is a middleware that will help with authentication.
+ * 
+ * 1. Add passport and passport local strategy
+ * 
+ * When a user POSTs their login information to the /login route, passport.authenticate(<strategy>, <callback function>)
+ * - The strategy is which 'style' of passport you are using.  Local is doing everything manual.  Google, Twitter, etc will use external OAuth systems.
+ * - The callback function will give us access to the user object if authentication is successful and an error if it is not.
+ * 
+ * cd client
+ * curl -X POST  http://localhost:3001/login -c cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}'
+ * 
+ * Note: that the req.session.passport and req.user are undefined and then later they are defined in the req.login function
+ */
+
 import express from 'express'
 import {v4 as uuidv4} from 'uuid'
 import session from 'express-session'
@@ -81,21 +96,3 @@ app.post('/login', (req, res, next)=>{
 })
 
 app.listen(3001, () => { console.log('Listening on localhost:3001')})
-
-
-
-
-/**
- * This is where we add passport, which is a middleware that will help with authentication.
- * 
- * 1. Add passport and passport local strategy
- * 
- * When a user POSTs their login information to the /login route, passport.authenticate(<strategy>, <callback function>)
- * - The strategy is which 'style' of passport you are using.  Local is doing everything manual.  Google, Twitter, etc will use external OAuth systems.
- * - The callback function will give us access to the user object if authentication is successful and an error if it is not.
- * 
- * cd client
- * curl -X POST  http://localhost:3001/login -c cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}'
- * 
- * Note: that the req.session.passport and req.user are undefined and then later they are defined in the req.login function
- */

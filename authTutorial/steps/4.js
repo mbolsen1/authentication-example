@@ -1,3 +1,12 @@
+/**
+ * We added a /login GET and POST route 
+ * the GET will serve the page
+ * the POST will do the loggin in
+ * 
+ * We also added the bodyParser so the body of our curl will be parsed
+ * 
+ * curl -X POST http://localhost:3001/login -b cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}'
+ */
 import express from 'express'
 import {v4 as uuidv4} from 'uuid'
 import session from 'express-session';
@@ -46,13 +55,3 @@ app.post('/login', (req, res)=>{
 app.listen(3001, () => { console.log('Listening on localhost:3001')})
 
 
-
-/**
- * We added a /login GET and POST route 
- * the GET will serve the page
- * the POST will do the loggin in
- * 
- * We also added the bodyParser so the body of our curl will be parsed
- * 
- * curl -X POST http://localhost:3001/login -b cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}'
- */

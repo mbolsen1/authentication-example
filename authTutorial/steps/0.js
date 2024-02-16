@@ -1,3 +1,5 @@
+// curl -X GET http://localhost:3001 -v
+
 import express from 'express'
 
 const app = express();
@@ -8,5 +10,3 @@ app.get('/', (req,res) => {
 })
 
 app.listen(3001, () => { console.log('Listening on localhost:3001')})
-
-// curl -X GET http://localhost:3001 -v

@@ -7,6 +7,7 @@ import bodyParser from 'body-parser'
 import passport from 'passport'
 import passportLocal from 'passport-local'
 import axios from 'axios'
+import bcrypt from 'bcrypt'
 
 const FileStore = sessionFileStore(expressSession) 
 const LocalStrategy = passportLocal.Strategy
@@ -26,7 +27,11 @@ passport.use(new LocalStrategy(
                     console.log('No user found with that Id')
                     return done(null, false, {message: 'Invalid credentials.\n'})
                 }
-                if (password != user.password){
+                // if (password != user.password){
+                //     console.log('Invalid credentials')
+                //     return done(null, false, {message: 'Invalid credentials.\n'})
+                // }
+                if (!bcrypt.compareSync(password, user.password)){
                     console.log('Invalid credentials')
                     return done(null, false, {message: 'Invalid credentials.\n'})
                 }
@@ -100,6 +105,15 @@ app.get('/authrequired', (req,res) => {
     } else {
         res.redirect('/')
     }
+})
+
+// Example of converting to a hash
+app.post('/saltthis', (req, res)=> {
+    const saltRounds = 10
+    const {text} = req.body
+    bcrypt.hash(text, saltRounds, (err, hash) => {
+        res.status(200).json({message: `salted text: ${hash}`})
+    })
 })
 
 app.listen(3001, () => { console.log('Listening on localhost:3001')})

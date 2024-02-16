@@ -1,3 +1,6 @@
+// curl -X GET http://localhost:3001 -v
+// notice the uuid being logged
+
 import express from 'express'
 import {v4 as uuidv4} from 'uuid' // package to create a unique id
 
@@ -10,6 +13,3 @@ app.get('/', (req,res) => {
 })
 
 app.listen(3001, () => { console.log('Listening on localhost:3001')})
-
-// curl -X GET http://localhost:3001 -v
-// notice the uuid being logged
