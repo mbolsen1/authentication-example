@@ -8,11 +8,12 @@ Steps:
 - Deseriaize the user from the session id, create a /authrequired route that will use isAuthenticated(), update login flow
 - Hook up a database and handle incorrect credentials
 - Handle encrypted passwords
+- add an expiration to the cookie
 
 
 Ideas for where to keep going with this:
+- logout - req.session.destroy()
 - add a readme
-- add an expiration to the cookie
 - explain cookies are stored on the client and sessions are stored on the server.
 - store secrets in the .env file
 - make a script to go get the secrets stored somewhere else before the server is started
@@ -26,5 +27,5 @@ Ideas for where to keep going with this:
 - hook up a real db for the users table
 - authorization to see content (permission levels)
 
-
+https://www.youtube.com/watch?v=IPAvfcodcI8
 
