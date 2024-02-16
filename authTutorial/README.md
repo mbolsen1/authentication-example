@@ -24,6 +24,7 @@ Ideas for where to keep going with this:
 - make an actual frontend page for each route
 - Hook up a real database to the session store
 - hook up a real db for the users table
+- authorization to see content (permission levels)
 
 
 
