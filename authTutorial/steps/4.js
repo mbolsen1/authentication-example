@@ -39,7 +39,7 @@ app.get('/', (req,res) => {
     res.send(`You have hit the home page.\n`)
 })
 
-//create the login GET and post routes
+//create the login GET and POST routes
 app.get('/login',(req,res)=>{
     console.log('Inside GET /login callback function')
     console.log(req.sessionId)

@@ -1,4 +1,5 @@
 /**
+ * Deseriaize the user from the session id, create a /authrequired route that will use isAuthenticated(), update login flow
  * 
  * Lets start by just going to the homepage
  * curl -X GET http://localhost:3001 -c cookie-file.txt
