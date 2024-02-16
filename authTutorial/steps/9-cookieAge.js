@@ -1,4 +1,21 @@
 /**
+ * Adding a maxAge to the session
+ * 
+ * by adding the cookie: {maxAge: <milleseconds>} session initializer/creator.
+ * 
+ * In this example we add an expiration of 10 seconds (10000 milleseconds) and then console.log that on the return.
+ * 
+ * delete the client cookie file and the session store
+ * curl http://localhost:3001/login -c cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}' -L
+ * -> this will output about ~9.988 seconds left to expire on the cookie
+ * 
+ * curl -X GET http://localhost:3001/authrequired -b cookie-file.txt -L
+ * -> If it was done within 10 seconds then it will return the authrequired route with the age left on the session.
+ * -> If done after 10 seconds the session has expired, so it will redirect to the home.
+ * 
+ */
+
+/**
  * Handle encrypted passwords
  * Saving un-hashed passwords is a bad idea.  We as the admin of this login system should never really be able to tell the passwords of our users.
  * 
@@ -131,4 +148,3 @@ app.post('/saltthis', (req, res)=> {
 })
 
 app.listen(3001, () => { console.log('Listening on localhost:3001')})
-
