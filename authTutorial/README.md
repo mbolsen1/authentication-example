@@ -8,7 +8,7 @@ Steps:
 - Deseriaize the user from the session id, create a /authrequired route that will use isAuthenticated(), update login flow
 - Hook up a database and handle incorrect credentials
 - Handle encrypted passwords
-- add an expiration to the cookie
+- add an expiration to the cookie.
 
 
 Ideas for where to keep going with this:
