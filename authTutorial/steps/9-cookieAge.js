@@ -132,6 +132,7 @@ app.get('/authrequired', (req,res) => {
     console.log('Inside GET /authrequired callback')
     console.log(`User authenticated? ${req.isAuthenticated()}`)
     if(req.isAuthenticated()){
+        // If someone is browsing the site then it would be pretty annoying to have the session expire on them. Here are two things to consider with that.
         // req.session.cookie.maxAge = 10000 // <- This is possible if you want to extend the age of the cookie
         // req.session.touch() // This will reset the maxAge to its original value
         res.send(`You are authenticated on this endpoint.  Cookie will expire in ${req.session.cookie.maxAge / 1000} seconds\n`)
